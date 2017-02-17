@@ -1,0 +1,5 @@
+servers1;server2;;
+E:;J:;;
+bases;file_name;dir_input;dir_output
+Rais;rais_2;rais;consolidadas/rais
+CadUnico;cad_unico2;cad_unico;consolidadas/cad_unico
