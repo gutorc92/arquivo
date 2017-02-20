@@ -7,6 +7,7 @@ get_env <- function(){
   files_env
 }
 
+#' @export
 set_bases_file <- function(bases_file){
   files_env <- get_env()
   files_env$bases_files <- bases_file
@@ -25,5 +26,5 @@ get_bases_file <- function(){
 }
 
 read_bases <- function(){
-  
+
 }
