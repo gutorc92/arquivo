@@ -43,6 +43,8 @@ get_bases_file <- function(){
   }
 }
 
+
+
 read_bases <- function(force_read = F){
   if(check_variable("bases") == F | force_read == T){
     bases_file <- get_bases_file()
@@ -64,4 +66,38 @@ read_servers <- function(force_read = F){
   }
   servers
 }
+
+#' @export
+set_server <- function(server_name){
+  servers <- read_servers()
+  if(!(server_name %in% colnames(servers))){
+    stop(paste(server_name,"does not exist", sep = " "))
+  }
+  n <- match("server2", colnames(servers))
+  server <- servers[1, n]
+  set_variable("server", server)
+}
+
+#' @export
+#'
+get_file_input <- function(base){
+  bases <- read_bases()
+  if("file_name_input" %in% colnames(bases)){
+    return(file.path(bases[bases == base, "dir_input"], bases[bases == base, "file_name_input"]))
+  }else{
+    return(file.path(bases[bases == base, "dir_input"], bases[bases == base, "file_name"]))
+  }
+}
+
+#' @export
+#'
+get_file_output <- function(base){
+  bases <- read_bases()
+  if("file_name_output" %in% colnames(bases)){
+    return(file.path(bases[bases == base, "dir_output"], bases[bases == base, "file_name_output"]))
+  }else{
+    return(file.path(bases[bases == base, "dir_output"], bases[bases == base, "file_name"]))
+  }
+}
+
 
